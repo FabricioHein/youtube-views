@@ -1,22 +1,16 @@
 const puppeteer = require("puppeteer");
 
 
-setInterval(function () {
-  let time = 5;
-
-  for (let index = 0; index < time; index++) {
-    run()
-      .then(() => console.log("Done"))
-      .catch((error) => console.log(error));
-  }
-}, 50000);
+run()
+.then(() => console.log("Done"))
+.catch((error) => console.log(error));
 
 async function run() {
-  const videoCanal = "https://www.youtube.com/watch?v=XTJ4V3C16I4";
+  const pageInsta = "https://www.instagram.com/";
 
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto(videoCanal);
+  await page.goto(pageInsta);
 
   await page.evaluate(() => {
     document.querySelector('input[name="q"]');
